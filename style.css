@@ -1,0 +1,371 @@
+/* --- CONFIGURAÇÕES DE CORES (Variáveis) --- */
+:root {
+    /* Tema Claro (Padrão) */
+    --primary: #FF477E;       /* Rosa Vibrante */
+    --primary-light: #FF90B3; /* Rosa Claro */
+    --bg-body: #FFF0F5;       /* Lavender Blush (Bem clarinho) */
+    --bg-sidebar: #FFFFFF;    /* Branco */
+    --bg-card: #FFFFFF;
+    --text-main: #594a4e;     /* Marrom acinzentado (suave) */
+    --text-sec: #8c8c8c;
+    --shadow: 0 10px 30px rgba(255, 71, 126, 0.15); /* Sombra Rosa */
+    --radius: 20px;
+}
+
+/* Tema Escuro (Rosa e Preto) */
+[data-theme="dark"] {
+    --bg-body: #121212;       /* Preto Fundo */
+    --bg-sidebar: #1E1E1E;    /* Cinza Escuro */
+    --bg-card: #252525;
+    --text-main: #ffffff;
+    --text-sec: #aaaaaa;
+    --primary: #FF477E;       /* Neon Pink */
+    --primary-light: #D6336C;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif; /* Fonte arredondada */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex; /* Layout Lado a Lado */
+    min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- SIDEBAR (Menu Lateral) --- */
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-sidebar);
+    padding: 2rem;
+    height: 100vh; /* Altura total da tela */
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    z-index: 100;
+}
+
+.profile-info { text-align: center; }
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    padding: 4px;
+    margin-bottom: 1rem;
+    background: var(--bg-sidebar);
+}
+
+.logo-text {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.role {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    border-radius: 15px;
+    color: var(--text-sec);
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    background-color: var(--primary-light);
+    color: white; /* Contraste no hover */
+    transform: translateX(5px);
+}
+
+/* Botão Tema e Redes Sociais */
+.btn-theme {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.btn-theme:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.socials a:hover {
+    color: var(--primary);
+    transform: scale(1.2);
+}
+
+/* --- CONTEÚDO PRINCIPAL (Direita) --- */
+.main-content {
+    margin-left: 280px; /* Empurra o conteúdo para não ficar embaixo da sidebar */
+    width: calc(100% - 280px);
+    padding: 4rem 8%;
+}
+
+.section-intro {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.intro-text h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.highlight { color: var(--primary); }
+
+.intro-text p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tags span {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- PROJETOS (Grid) --- */
+.section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: block;
+    position: relative;
+}
+
+.card-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+/* ANIMAÇÃO DE CRESCIMENTO (Zoom) */
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1); /* Cresce 10% */
+}
+
+.card-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.card-info p {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* --- CONTATO (Formulário Rosa) --- */
+.contact-box {
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 700px;
+}
+
+.email-display {
+    font-weight: 700;
+    margin: 1rem 0 2rem 0;
+    color: var(--primary);
+}
+
+.form-pink {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--primary-light);
+    border-radius: 15px;
+    background: transparent;
+    color: var(--text-main);
+    outline: none;
+    font-size: 1rem;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-sec);
+    pointer-events: none;
+    transition: 0.3s;
+    background: var(--bg-card);
+    padding: 0 5px;
+}
+
+.input-group textarea + label {
+    top: 20px;
+}
+
+/* Efeito Flutuante no Label */
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+    top: 0;
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.btn-send {
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-send:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-sec);
+}
+
+/* --- RESPONSIVIDADE (Mobile) --- */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        transform: translateX(-100%); /* Esconde sidebar */
+        transition: transform 0.3s;
+        width: 100%; /* Sidebar vira menu cheio */
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Mostra sidebar */
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 6rem 5% 2rem 5%;
+    }
+
+    .mobile-toggle { display: block; }
+    
+    .intro-text h2 { font-size: 2rem; }
+}
